@@ -241,6 +241,26 @@ module MultiBox(
          }
       }
    }
+   if (part=="basemount"){
+      union(){
+         translate([0,0,0])
+            _MultiBox_base_shell(w=box_width,l=box_length,
+                       h=box_wall_thickness-0.1,
+                       r=box_corner_radius);
+         if (fastening=="rail"){
+            translate([(width/2-rail_w/2-rail_w),0,box_wall_thickness])
+               RailProfile(
+                     h=rail_h,w=rail_w,l=length,
+                     top=false,spacer=false
+               );
+            translate([(width/2-rail_w/2-rail_w)*-1,0,box_wall_thickness])
+               RailProfile(
+                     h=8,w=rail_w,l=length,
+                     top=false,spacer=false
+               );
+         }
+      }
+   }
 }
 
 
@@ -258,14 +278,25 @@ translate([0,0,50])
       height=BoxHeight,
       cover_pct=BoxCoverPCT
    );
-//translate([0,0,0]) 
-//   MultiBox(
-//      part="bottom",
-//      fastening="rail",
-//      width=BoxWidth,
-//      length=BoxLength,
-//      wall_thickness=BoxWallThickness,
-//      height=BoxHeight,
-//      cover_pct=BoxCoverPCT
-//   );
+translate([0,0,0]) 
+   MultiBox(
+      part="bottom",
+      fastening="rail",
+      width=BoxWidth,
+      length=BoxLength,
+      wall_thickness=BoxWallThickness,
+      height=BoxHeight,
+      cover_pct=BoxCoverPCT
+   );
+
+translate([0,0,-50]) 
+   MultiBox(
+      part="basemount",
+      fastening="rail",
+      width=BoxWidth,
+      length=BoxLength,
+      wall_thickness=BoxWallThickness,
+      height=BoxHeight,
+      cover_pct=BoxCoverPCT
+   );
 
