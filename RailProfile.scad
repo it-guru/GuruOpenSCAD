@@ -1,6 +1,6 @@
 Length=80;
-Width=13;
-Height=10;
+Width=10;
+Height=8;
 basethickness=1.8;
 
 module RailProfile(g=1.2,l=20,bt=2,topw=5,h=0,
@@ -11,6 +11,7 @@ module RailProfile(g=1.2,l=20,bt=2,topw=5,h=0,
 {
    topw=w>0 ? (w-(2*bt)-(3-g)) : topw;
    g=h>0 ? (h-bt)/4 : g;
+   echo("Grid=",g);
    toothcount=floor((l-2*bt-brickl*1.5-brickl)/brickl/2);
    if (top){
       union(){
