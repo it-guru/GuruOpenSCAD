@@ -3,7 +3,7 @@
 Relif_sz=20;
 Relif_height=10;
 
-module StrainRelif(sz=20,part="bottom",spacer=false){
+module StrainRelif1(sz=20,part="bottom",spacer=false){
    g=sz/20;
    h=10*g;
    if (part=="bottom"){
@@ -54,17 +54,17 @@ module StrainRelif(sz=20,part="bottom",spacer=false){
 }
 
 translate([0,0,30])
-   StrainRelif(
+   StrainRelif1(
       part="skrew",
       sz=Relif_sz
    );
 translate([0,0,0])
-   StrainRelif(
+   StrainRelif1(
       part="bottom",
       sz=Relif_sz
    );
 //translate([0,0,-30])
-//   StrainRelif(
+//   StrainRelif1(
 //      part="bottom",
 //      spacer=true,
 //      sz=Relif_sz
